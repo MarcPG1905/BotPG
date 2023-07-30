@@ -3,9 +3,8 @@ package me.marcpg1905;
 import me.marcpg1905.economy.LevelSystem;
 import me.marcpg1905.economy.StatsCommand;
 import me.marcpg1905.game.CoinFlip;
-import me.marcpg1905.game.RockPaperScissors;
-import me.marcpg1905.game.TicTacToe;
 import me.marcpg1905.moderation.AutoAnswer;
+import me.marcpg1905.moderation.ServerBanPreventer;
 import me.marcpg1905.moderation.WarnCommand;
 import me.marcpg1905.moderation.WarnReason;
 import net.dv8tion.jda.api.JDA;
@@ -43,7 +42,8 @@ public class BotPG {
                         new AutoAnswer(),
                         new WarnCommand(),
                         new StopBotPGCommand(),
-                        new DevLog()
+                        new DevLog(),
+                        new ServerBanPreventer()
                 )
                 .build().awaitReady();
 

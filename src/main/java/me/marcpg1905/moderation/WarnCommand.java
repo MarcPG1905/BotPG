@@ -23,6 +23,14 @@ public class WarnCommand extends ListenerAdapter {
     private final ObjectMapper MAPPER = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     private HashMap<String, Integer> warnedUserWarns = new HashMap<>();
 
+    public WarnCommand() {
+        try {
+            warnedUserWarns = MAPPER.readValue(new File("data/warns.json"), new TypeReference<>() {});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         if (event.getName().equals("warn")) {
             User warner = event.getUser();
